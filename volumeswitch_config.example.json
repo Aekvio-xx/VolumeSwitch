@@ -1,0 +1,15 @@
+{
+  "primary": {
+    "id": "",
+    "name": ""
+  },
+  "secondary": {
+    "id": "",
+    "name": ""
+  },
+  "hotkey": "",
+  "autostart": false,
+  "start_minimized": true,
+  "show_notifications": true,
+  "fallback_to_primary_on_unknown": true
+}
