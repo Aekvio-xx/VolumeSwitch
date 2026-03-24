@@ -16,10 +16,10 @@
 
 ## Requirements
 
-- Windows 11
+- Windows 10 or Windows 11
 - Python 3.10 or newer
 
-## DependencyLibrary
+## Install Dependencies
 
 ```powershell
 python -m pip install comtypes
@@ -33,11 +33,28 @@ python .\VolumeSwitch.py
 
 On first launch, the app will ask you to select two audio output devices and will create `volumeswitch_config.json` locally.
 
+## Build EXE
+
+Install PyInstaller:
+
+```powershell
+python -m pip install pyinstaller
+```
+
+Build a single-file executable:
+
+```powershell
+pyinstaller --noconsole --onefile --name VolumeSwitch --icon headset.ico --add-data "headset.ico;." --add-data "bspeaker.ico;." VolumeSwitch.py
+```
+
+After the build finishes, the executable will be generated at `dist\VolumeSwitch.exe`.
+
 ## Local Runtime Files
 
 - Config file: `volumeswitch_config.json`
 - Log directory: `logs/`
 
+These files are machine-specific and should not be committed to GitHub.
 
 ## Project Structure
 
@@ -46,6 +63,7 @@ VolumeSwitch/
 |-- VolumeSwitch.py
 |-- README.md
 |-- README.zh-CN.md
+|-- LICENSE
 |-- headset.ico
 |-- bspeaker.ico
 |-- volumeswitch/

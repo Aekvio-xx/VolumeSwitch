@@ -1,8 +1,8 @@
 # VolumeSwitch
 
-[English](README.md) | [Chinese](README.zh-CN.md)
+[English](README.md) | [中文](README.zh-CN.md)
 
-`VolumeSwitch` 是一个面向 Windows 10/11 的 Python 托盘小工具，用来在两个预设的音频输出设备之间快速切换。
+`VolumeSwitch` 是一个面向 Windows 10/11 的 Python 托盘工具，用来在两个预设的音频输出设备之间快速切换。
 
 ## 功能
 
@@ -16,10 +16,10 @@
 
 ## 环境要求
 
-- Windows 11
+- Windows 10 或 Windows 11
 - Python 3.10 或更高版本
 
-## 依赖库
+## 安装依赖
 
 ```powershell
 python -m pip install comtypes
@@ -33,11 +33,28 @@ python .\VolumeSwitch.py
 
 首次启动时，程序会提示你选择两个音频输出设备，并在本地生成 `volumeswitch_config.json`。
 
+## 打包 EXE
+
+先安装 PyInstaller：
+
+```powershell
+python -m pip install pyinstaller
+```
+
+执行下面的命令打包单文件 exe：
+
+```powershell
+pyinstaller --noconsole --onefile --name VolumeSwitch --icon headset.ico --add-data "headset.ico;." --add-data "bspeaker.ico;." VolumeSwitch.py
+```
+
+打包完成后，生成的程序位于 `dist\VolumeSwitch.exe`。
+
 ## 本地运行文件
 
 - 配置文件：`volumeswitch_config.json`
 - 日志目录：`logs/`
 
+这些文件是本机相关文件，不应提交到 GitHub。
 
 ## 项目结构
 
@@ -46,6 +63,7 @@ VolumeSwitch/
 |-- VolumeSwitch.py
 |-- README.md
 |-- README.zh-CN.md
+|-- LICENSE
 |-- headset.ico
 |-- bspeaker.ico
 |-- volumeswitch/
@@ -61,5 +79,3 @@ VolumeSwitch/
 |   `-- ui.py
 `-- volumeswitch_config.example.json
 ```
-
-
